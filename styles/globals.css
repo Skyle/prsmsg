@@ -27,5 +27,21 @@ h4 {
 }
 
 .dreieck {
-  clip-path: polygon(50% 21%, 0% 100%, 100% 100%);
+  clip-path: polygon(100% 100%, 50% 0, 0 100%);
+}
+
+.redTriangle {
+  clip-path: polygon(100% 100%, 0 25%, 0 100%);
+}
+
+.yellowTriangle {
+  clip-path: polygon(100% 100%, 25% 0, 100% 0);
+}
+
+.greenTriangle {
+  clip-path: polygon(0 100%, 0 0, 75% 0);
+}
+
+.purpleTriangle {
+  clip-path: polygon(100% 100%, 100% 25%, 0 100%);
 }
