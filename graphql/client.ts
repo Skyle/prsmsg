@@ -6,15 +6,11 @@ import {
   Client,
   Exchange,
 } from "urql";
-import { multipartFetchExchange } from "@urql/exchange-multipart-fetch";
+
 import { createClient as createWSClient } from "graphql-ws";
 
 export const createUrqlClient = (): Client => {
-  let exchanges: Exchange[] | undefined = [
-    dedupExchange,
-    cacheExchange,
-    multipartFetchExchange,
-  ];
+  let exchanges: Exchange[] | undefined = [dedupExchange, cacheExchange];
 
   if (typeof window !== "undefined") {
     const wsClient = createWSClient({
