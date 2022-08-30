@@ -1,16 +1,20 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
+import Dreieck from "../components/Dreieck";
 import styles from "../styles/Home.module.css";
 
 const Home: NextPage = () => {
   return (
-    <div>
-      <h1>h1</h1>
-      <h2>h2</h2>
-      <h3>h3</h3>
-      <h4>h4</h4>
-      <div className="">hey</div>
+    <div className="grid gap-8 justify-center items-center p-12">
+      <div>
+        <div className="">Alle Nachrichten</div>
+      </div>
+      <div>
+        <div className="p-8 border border-gray-600 rounded-xl">
+          <Dreieck></Dreieck>
+        </div>
+      </div>
     </div>
   );
 };
