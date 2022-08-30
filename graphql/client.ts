@@ -10,10 +10,6 @@ import { multipartFetchExchange } from "@urql/exchange-multipart-fetch";
 import { createClient as createWSClient } from "graphql-ws";
 
 export const createUrqlClient = (): Client => {
-  const graphqlEndpoint = process.env!.NEXT_PUBLIC_GRAPHQL_ENDPOINT as string;
-  const graphqlWebsocketEndpoint = process.env!
-    .NEXT_PUBLIC_GRAPHQL_WS_ENDPOINT as string;
-
   let exchanges: Exchange[] | undefined = [
     dedupExchange,
     cacheExchange,
@@ -22,7 +18,7 @@ export const createUrqlClient = (): Client => {
 
   if (typeof window !== "undefined") {
     const wsClient = createWSClient({
-      url: "https://chat.nrdz.de/graphiql",
+      url: "wss://chat.nrdz.de/graphql",
     });
 
     const subExchange = subscriptionExchange({
