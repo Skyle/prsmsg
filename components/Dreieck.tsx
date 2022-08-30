@@ -7,7 +7,7 @@ type Props = {};
 function Dreieck({}: Props) {
   return (
     <div className="">
-      <div className="dreieck">
+      <div className="dreieck position">
         <div className="p-4 bg-gradient-to-b from-cyan-500 to-blue-500"></div>
         <div className="p-4 bg-gradient-to-b from-blue-500 to-orange-500"></div>
         <div className="p-4 bg-gradient-to-b from-orange-500 to-emerald-500"></div>
