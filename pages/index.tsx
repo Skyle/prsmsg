@@ -6,7 +6,11 @@ import styles from "../styles/Home.module.css";
 const Home: NextPage = () => {
   return (
     <div>
-      <div className="bg-gray-900 h-full"></div>
+      <h1>h1</h1>
+      <h2>h2</h2>
+      <h3>h3</h3>
+      <h4>h4</h4>
+      <div className="">hey</div>
     </div>
   );
 };
