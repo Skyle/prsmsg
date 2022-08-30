@@ -11,7 +11,7 @@ const Home: NextPage = () => {
         <div className="">Alle Nachrichten</div>
       </div>
       <div>
-        <div className="p-8 border border-gray-600 rounded-xl">
+        <div className="p-8 ">
           <Dreieck></Dreieck>
         </div>
       </div>

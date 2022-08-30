@@ -25,3 +25,7 @@ h3 {
 h4 {
   @apply text-xl;
 }
+
+.dreieck {
+  clip-path: polygon(50% 21%, 0% 100%, 100% 100%);
+}
