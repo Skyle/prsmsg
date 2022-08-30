@@ -14,7 +14,7 @@ function Dreieck({}: Props) {
         <div className="p-4 bg-gradient-to-b from-orange-500 to-emerald-500"></div>
       </div>
       <form
-        className="flex p-2 gap-4"
+        className="flex p-2 gap-4 text"
         onSubmit={(e) => {
           e.preventDefault();
         }}
