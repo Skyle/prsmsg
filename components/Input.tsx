@@ -1,9 +1,12 @@
 import React from "react";
 
-type Props = {};
+type Props = {
+  value: string;
+  onChange: React.ChangeEventHandler<HTMLInputElement>;
+};
 
-function Input({}: Props) {
-  return <input />;
+function Input({ value, onChange }: Props) {
+  return <input value={value} onChange={onChange} />;
 }
 
 export default Input;
