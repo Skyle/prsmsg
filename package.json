@@ -9,14 +9,19 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "graphql": "^16.6.0",
+    "graphql-ws": "^5.10.1",
     "next": "12.2.5",
     "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react-dom": "18.2.0",
+    "urql": "^3.0.1",
+    "zustand": "^4.1.1"
   },
   "devDependencies": {
     "@types/node": "18.7.14",
     "@types/react": "18.0.17",
     "@types/react-dom": "18.0.6",
+    "@types/ws": "^8.5.3",
     "autoprefixer": "^10.4.8",
     "eslint": "8.23.0",
     "eslint-config-next": "12.2.5",
