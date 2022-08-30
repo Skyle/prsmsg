@@ -6,7 +6,14 @@ type Props = {
 };
 
 function Input({ value, onChange }: Props) {
-  return <input value={value} onChange={onChange} />;
+  return (
+    <input
+      value={value}
+      onChange={(e) => {
+        onChange;
+      }}
+    />
+  );
 }
 
 export default Input;
