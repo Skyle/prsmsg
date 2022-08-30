@@ -1,8 +1,7 @@
 import type { NextPage } from "next";
-import Head from "next/head";
-import Image from "next/image";
+import { Messages } from "../components/Messages";
+
 import Dreieck from "../components/Dreieck";
-import styles from "../styles/Home.module.css";
 
 const Home: NextPage = () => {
   return (
@@ -15,12 +14,16 @@ const Home: NextPage = () => {
         <div className="greenTriangle bg-green-500 absolute h-full w-1/2 right-0 bg-opacity-50"></div>
         <div className="purpleTriangle bg-purple-500 absolute h-full w-1/2 right-0 bg-opacity-50"></div>
       </div>
-      <div className="z-10">
-        <div className="border h-96">Alle Nachrichten</div>
-      </div>
-      <div>
-        <div className="p-8 z-10">
-          <Dreieck></Dreieck>
+      <div className="grid gap-8 justify-center items-center p-12">
+        <div>
+          <div className="">
+            <Messages />
+          </div>
+        </div>
+        <div>
+          <div className="p-8 z-10">
+            <Dreieck></Dreieck>
+          </div>
         </div>
       </div>
     </div>
