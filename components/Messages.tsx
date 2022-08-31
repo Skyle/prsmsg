@@ -26,5 +26,11 @@ export const Messages = () => {
     handleSubscription,
   );
 
-  return <div>{JSON.stringify(res.data)}</div>;
+  return (
+    <div>
+      {res.data?.map((message) => (
+        <div key={message.id}>{message.text}</div>
+      ))}
+    </div>
+  );
 };
