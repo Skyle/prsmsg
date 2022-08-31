@@ -1,9 +1,7 @@
 import React from "react";
 import { Messages } from "./Messages";
 
-type Props = {};
-
-function TriangleBackground({}: Props) {
+function TriangleBackground() {
   return (
     <div className="h-full w-full absolute overflow-hidden">
       <div className="blueBox bg-gradient-to-tr from-transparent to-blue-500 absolute h-full w-1/2 right-0"></div>

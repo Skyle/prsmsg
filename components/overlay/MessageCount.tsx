@@ -1,6 +1,5 @@
-import React from "react";
 import { useQuery } from "urql";
-import { MessageCountQuery } from "../graphql/queries";
+import { MessageCountQuery } from "../../graphql/queries";
 
 function MessageCount() {
   const [result] = useQuery({

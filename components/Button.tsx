@@ -1,8 +1,4 @@
-import React from "react";
-
-type Props = {};
-
-function Button({}: Props) {
+function Button() {
   return (
     <div className="">
       <button

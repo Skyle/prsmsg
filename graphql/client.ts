@@ -11,11 +11,7 @@ import {
 import { createClient as createWSClient } from "graphql-ws";
 
 export const createUrqlClient = (): Client => {
-  let exchanges: Exchange[] | undefined = [
-    dedupExchange,
-    cacheExchange,
-    fetchExchange,
-  ];
+  let exchanges: Exchange[] = [dedupExchange, cacheExchange, fetchExchange];
 
   if (typeof window !== "undefined") {
     const wsClient = createWSClient({

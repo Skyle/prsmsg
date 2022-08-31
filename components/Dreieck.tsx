@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useMutation } from "urql";
 import { AddMessageMutation } from "../graphql/mutations";
 import Button from "./Button";

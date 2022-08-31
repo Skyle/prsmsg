@@ -1,8 +1,4 @@
-import React from "react";
-
-type Props = {};
-
-function GQLLink({}: Props) {
+function GQLLink() {
   return (
     <div>
       <a href="https://chat.nrdz.de/graphiql">

@@ -1,16 +1,11 @@
 import { useQuery, useSubscription } from "urql";
 import { MessageCountQuery } from "../graphql/queries";
 import { MessageAddedSubscription } from "../graphql/subscriptions";
-
-interface Message {
-  id?: string;
-  text?: string;
-  createdAt?: string;
-}
+import { Message } from "../interfaces/message.interface";
 
 export const Messages = () => {
   // this is for updating the message count in the MessageCount Component
-  const [_, reexecuteQuery] = useQuery({
+  const [_, reexecuteMessageCountQuery] = useQuery({
     query: MessageCountQuery,
   });
 
@@ -18,14 +13,14 @@ export const Messages = () => {
   const [res] = useSubscription(
     { query: MessageAddedSubscription },
     (messages: Message[] = [], response) => {
-      reexecuteQuery();
+      reexecuteMessageCountQuery();
       return [response.messageAdded, ...messages];
     },
   );
 
   return (
     <div>
-      {res.data?.map((message: Message) => (
+      {res.data?.map((message) => (
         <div key={message.id}>{message.text}</div>
       ))}
     </div>
