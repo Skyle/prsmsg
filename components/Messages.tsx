@@ -1,4 +1,4 @@
-import { gql, useQuery, useSubscription } from "urql";
+import { gql, useSubscription } from "urql";
 
 interface Message {
   id?: string;
@@ -6,13 +6,9 @@ interface Message {
   createdAt?: string;
 }
 
-interface MessagesQueryData {
-  messages: Message[];
-}
-
-const allMessages = gql`
-  query {
-    messages {
+const MessageAddedSubscription = gql`
+  subscription MessageAdded {
+    messageAdded {
       id
       text
       createdAt
@@ -20,33 +16,15 @@ const allMessages = gql`
   }
 `;
 
-// const handleSubscription = (messages: Message[] = [], response: any) => {
-//   return [response.newMessages, ...messages];
-// };
+const handleSubscription = (messages: Message[] = [], response: any) => {
+  return [response.messageAdded, ...messages];
+};
 
 export const Messages = () => {
-  // const [res] = useSubscription({ query: newMessages }, handleSubscription);
-
-  const [{ data }] = useQuery<MessagesQueryData>({
-    query: allMessages,
-    requestPolicy: "cache-and-network",
-  });
-
-  if (!data) {
-    return <p>No new messages</p>;
-  }
-
-  return (
-    <div>
-      {data.messages?.map((message) => (
-        <div key={message.id}>
-          Message:
-          <div className="text-xl border rounded px-2 py-3">
-            {message.text}{" "}
-          </div>
-          <div className="text-sm">{message.createdAt}</div>
-        </div>
-      ))}
-    </div>
+  const [res] = useSubscription(
+    { query: MessageAddedSubscription },
+    handleSubscription,
   );
+
+  return <div>{JSON.stringify(res.data)}</div>;
 };

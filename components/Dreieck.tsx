@@ -26,7 +26,7 @@ function Dreieck({}: Props) {
         onSubmit={(e) => {
           e.preventDefault();
           addMessage({ text: messageText });
-          setMessageText('');
+          setMessageText("");
         }}
       >
         <Input
