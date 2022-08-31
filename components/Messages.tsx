@@ -39,9 +39,13 @@ export const Messages = () => {
   return (
     <div>
       {data.messages?.map((message) => (
-        <p key={message.id}>
-          {message.text} {message.createdAt}
-        </p>
+        <div key={message.id}>
+          Message:
+          <div className="text-xl border rounded px-2 py-3">
+            {message.text}{" "}
+          </div>
+          <div className="text-sm">{message.createdAt}</div>
+        </div>
       ))}
     </div>
   );
