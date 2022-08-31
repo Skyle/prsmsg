@@ -1,43 +1,30 @@
 import React, { useState } from "react";
-import { gql, useMutation } from "urql";
+import { useMutation } from "urql";
+import { AddMessageMutation } from "../graphql/mutations";
 import Button from "./Button";
 import Input from "./Input";
 
-type Props = {};
-
-const AddMessageMutation = gql`
-  mutation AddMessageMutation($text: String!) {
-    addMessage(text: $text) {
-      id
-      text
-      createdAt
-    }
-  }
-`;
-
-function Dreieck({}: Props) {
+function Dreieck() {
   const [messageText, setMessageText] = useState("");
-  const [addMessageResult, addMessage] = useMutation(AddMessageMutation);
+  const [_, addMessage] = useMutation(AddMessageMutation);
 
   return (
-    <div className="">
-      <form
-        className="flex p-2 gap-4 text"
-        onSubmit={(e) => {
-          e.preventDefault();
-          addMessage({ text: messageText });
-          setMessageText("");
+    <form
+      className="flex p-2 gap-4 text"
+      onSubmit={(e) => {
+        e.preventDefault();
+        addMessage({ text: messageText });
+        setMessageText("");
+      }}
+    >
+      <Input
+        value={messageText}
+        onChange={(e) => {
+          setMessageText(e.target.value);
         }}
-      >
-        <Input
-          value={messageText}
-          onChange={(e) => {
-            setMessageText(e.target.value);
-          }}
-        ></Input>
-        <Button></Button>
-      </form>
-    </div>
+      ></Input>
+      <Button></Button>
+    </form>
   );
 }
 

@@ -1,24 +1,11 @@
-import React, { useEffect, useState } from "react";
-import { gql, useQuery } from "urql";
+import React from "react";
+import { useQuery } from "urql";
+import { MessageCountQuery } from "../graphql/queries";
 
-type Props = {};
-
-const MessageCountQuery = gql`
-  query {
-    messageCount
-  }
-`;
-
-function MessageCount({}: Props) {
-  const [result, reexecuteQuery] = useQuery({
+function MessageCount() {
+  const [result] = useQuery({
     query: MessageCountQuery,
   });
-
-  useEffect(() => {
-    setInterval(() => {
-      reexecuteQuery();
-    }, 2000);
-  }, [reexecuteQuery]);
 
   if (result.data)
     return (

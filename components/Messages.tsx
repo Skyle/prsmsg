@@ -1,4 +1,6 @@
-import { gql, useSubscription } from "urql";
+import { useQuery, useSubscription } from "urql";
+import { MessageCountQuery } from "../graphql/queries";
+import { MessageAddedSubscription } from "../graphql/subscriptions";
 
 interface Message {
   id?: string;
@@ -6,29 +8,24 @@ interface Message {
   createdAt?: string;
 }
 
-const MessageAddedSubscription = gql`
-  subscription MessageAdded {
-    messageAdded {
-      id
-      text
-      createdAt
-    }
-  }
-`;
-
-const handleSubscription = (messages: Message[] = [], response: any) => {
-  return [response.messageAdded, ...messages];
-};
-
 export const Messages = () => {
+  // this is for updating the message count in the MessageCount Component
+  const [_, reexecuteQuery] = useQuery({
+    query: MessageCountQuery,
+  });
+
+  // subscription for new messages with the handler to format it into res.data as Message[]
   const [res] = useSubscription(
     { query: MessageAddedSubscription },
-    handleSubscription,
+    (messages: Message[] = [], response) => {
+      reexecuteQuery();
+      return [response.messageAdded, ...messages];
+    },
   );
 
   return (
     <div>
-      {res.data?.map((message) => (
+      {res.data?.map((message: Message) => (
         <div key={message.id}>{message.text}</div>
       ))}
     </div>
