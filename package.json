@@ -3,9 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "reload": "pm2 stop prsmsg && git pull && npm i && npm run build && pm2 start prsmsg",
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
+    "start": "next start -p 3400",
     "lint": "next lint"
   },
   "dependencies": {
