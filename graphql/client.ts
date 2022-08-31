@@ -5,12 +5,17 @@ import {
   subscriptionExchange,
   Client,
   Exchange,
+  fetchExchange,
 } from "urql";
 
 import { createClient as createWSClient } from "graphql-ws";
 
 export const createUrqlClient = (): Client => {
-  let exchanges: Exchange[] | undefined = [dedupExchange, cacheExchange];
+  let exchanges: Exchange[] | undefined = [
+    dedupExchange,
+    cacheExchange,
+    fetchExchange,
+  ];
 
   if (typeof window !== "undefined") {
     const wsClient = createWSClient({
@@ -29,12 +34,9 @@ export const createUrqlClient = (): Client => {
   }
 
   const client = createClient({
-    url: "https://chat.nrdz.de/graphiql",
+    url: "https://chat.nrdz.de/graphql",
     requestPolicy: "cache-and-network",
     exchanges,
-    fetchOptions: () => ({
-      credentials: "include",
-    }),
   });
 
   return client;
