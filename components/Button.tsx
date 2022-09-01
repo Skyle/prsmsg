@@ -7,7 +7,7 @@ function Button({}: Props) {
     <div className="">
       <button
         type="submit"
-        className="border-b-green-600 border-b-[40px] border-r-transparent border-r-[25px] border-l-transparent border-l-[25px] hover:border-b-pink-600"
+        className="border-b-green-600 border-b-[40px] border-r-transparent border-r-[25px] border-l-transparent border-l-[25px] hover:border-b-white duration-500"
       ></button>
     </div>
   );

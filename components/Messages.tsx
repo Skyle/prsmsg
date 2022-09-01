@@ -38,15 +38,20 @@ export const Messages = () => {
 
   return (
     <div>
-      {data.messages?.map((message) => (
-        <div key={message.id}>
-          Message:
-          <div className="text-xl border rounded px-2 py-3">
-            {message.text}{" "}
+      {data.messages
+        ?.map((message) => (
+          <div key={message.id} className="w-[30rem] my-4">
+            <div className="text-xl border rounded-full bg-blue-200 bg-opacity-25 px-6 py-6 backdrop-blur-md shadow-md">
+              {message.text}{" "}
+            </div>
+            <div className="text-sm text-center">
+              {message.createdAt?.slice(0, 10)}{" "}
+              {message.createdAt?.slice(11, 19)}
+            </div>
           </div>
-          <div className="text-sm">{message.createdAt}</div>
-        </div>
-      ))}
+        ))
+        .slice(0, 6)
+        .reverse()}
     </div>
   );
 };

@@ -22,20 +22,20 @@ function Dreieck({}: Props) {
   return (
     <div className="">
       <form
-        className="flex p-2 gap-4 text"
+        className="flex flex-col items-center p-8 gap-4 text"
         onSubmit={(e) => {
           e.preventDefault();
           addMessage({ text: messageText });
-          setMessageText('');
+          setMessageText("");
         }}
       >
+        <Button></Button>
         <Input
           value={messageText}
           onChange={(e) => {
             setMessageText(e.target.value);
           }}
         ></Input>
-        <Button></Button>
       </form>
     </div>
   );
